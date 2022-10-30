@@ -48,7 +48,7 @@
 <script>
 /**Función para eliminar lenguaje desde la Tabla*/
 function eliminarLenguaje(idLenguaje, lenguaje) {
-  //console.log(idLenguaje);
+  console.log(idLenguaje);
   let li = document.querySelector('#Registro_' + idLenguaje);
 
   var urlForm = "{{ url_for('borrarLenguaje') }}";
@@ -58,8 +58,8 @@ function eliminarLenguaje(idLenguaje, lenguaje) {
       url: urlForm,
       success: function(resp) {
         console.log(resp)
-        //console.log(resp.dataR);
-        //console.log(resp.dataR[1]);
+        console.log(resp.dataR);
+        console.log(resp.dataR[1]);
         const resultado = resp.dataR[1];
         console.log(resultado)
 

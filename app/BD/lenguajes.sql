@@ -43,7 +43,7 @@ INSERT INTO `lenguajes` (`id`, `name_lenguaje`, `logo`, `likes`) VALUES
 (2, 'JAVA', 'https://w7.pngwing.com/pngs/837/18/png-transparent-logo-java-runtime-environment-programming-language-runtime-system-oracle-text-logo-desktop-wallpaper-thumbnail.png', 18),
 (3, 'C++', 'https://e7.pngegg.com/pngimages/520/669/png-clipart-c-logo-c-programming-language-computer-icons-computer-programming-programming-miscellaneous-blue-thumbnail.png', 15),
 (4, 'PHP', 'https://www.pngkey.com/png/full/360-3603565_php-logo-png-logo-php.png', 8),
-(5, 'NODE.JS', 'https://img2.freepng.es/20180425/jrw/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e2a4242.1423638015246930701731.jpg', NULL),
+(5, 'NODE.JS', 'https://img2.freepng.es/20180425/jrw/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e2a4242.1423638015246930701731.jpg', 16),
 (6, 'JAVASCRIPT', 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png', 25);
 
 --
