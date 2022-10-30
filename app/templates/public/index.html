@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar Registro con JavaScript en Python - Flask - MySQL</title>
+  <link rel="icon" href="{{url_for('static', filename ='assets/imgs/favicon.ico')}}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/custom_alert.css') }}">
+</head>
+
+<body>
+
+{% 
+  include 'public/alertas.html' 
+%}
+
+<!-- Evaluo, si existe listaLenguajes y es >0  -->  
+{% if (listaLenguajes) %}
+<h1 class="text-center bold">Eliminar Registro con JavaScript en Python - Flask - MySQL </h1>
+  <div class="container">
+    <div class="header">
+      <h1>Lenguajes de Programación favoritos</h1>
+    </div>
+    <ul>
+      <!-- Recorro todos los lenguajes que estan almacenado en la variable lenguaje -->
+      {% for lenguaje in listaLenguajes %}
+          <li id="Registro_{{ lenguaje.id }}" onclick="eliminarLenguaje('{{ lenguaje.id }}','{{ lenguaje.name_lenguaje }}');">
+              <img src="{{ lenguaje.logo }}" alt="Logo lenguaje de programación"/>
+              <h1>{{ lenguaje.name_lenguaje }}</h1>
+              <p>
+                {{ lenguaje.likes}}
+                <i class="bi bi-hand-thumbs-up"></i>
+              </p>
+          </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% else %}
+    <p style="text-align: center;">No hay lenguajes disponibles 😭 </p>
+  {% endif %}
+
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename ='assets/js/home.js') }}"></script>
+<script>
+/**Función para eliminar lenguaje desde la Tabla*/
+function eliminarLenguaje(idLenguaje, lenguaje) {
+  //console.log(idLenguaje);
+  let li = document.querySelector('#Registro_' + idLenguaje);
+
+  var urlForm = "{{ url_for('borrarLenguaje') }}";
+      $.ajax({
+      type: "POST",
+      data: {idLenguaje},
+      url: urlForm,
+      success: function(resp) {
+        console.log(resp)
+        //console.log(resp.dataR);
+        //console.log(resp.dataR[1]);
+        const resultado = resp.dataR[1];
+        console.log(resultado)
+
+        if(resultado == 1){
+          li.remove(); //remuevo el registro desde la lista
+          mensaje(lenguaje); //Llamo la funcion mensaje() y le paso el nombre del lenguale eliminado
+        }else{
+          console.log('Error al intentar borrar lenguaje ' +lenguaje);
+        }
+        
+      }
+  }); 
+
+}
+</script>
+</body>
+</html>
