@@ -1,5 +1,5 @@
 # PASO 1, Crear mi entorno virtual
-#  virtualenv -p python3 env
+#  python -m venv venv
 
 # PASO 2, Activar el entorno virtual ejecutando;
 #  . env/Scripts/activate  
